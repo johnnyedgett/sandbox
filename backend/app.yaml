@@ -13,6 +13,6 @@
 #
 # [START runtime]
 runtime: nodejs8
-beta_settings:
-  cloud_sql_instances: stable-framing-217217:us-central1:db-dev
+# beta_settings:
+#   cloud_sql_instances: stable-framing-217217:us-central1:db-dev
 # [END runtime]
