@@ -4,9 +4,11 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 
-// const db = require('./utils/DBConnector')
+// Routes
+var userRouter = require('./controllers/UserRouter')
 
 app.use(morgan('combined'))
+app.use('/users', userRouter)
 
 app.get('/', (req, res) => {
   console.log('here')
