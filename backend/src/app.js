@@ -4,8 +4,8 @@ const morgan = require('morgan')
 
 app.use(morgan('combined'))
 
-app.get('/', (req, res)=>{
-    res.send({"msg":"looks like the server works!"})
+app.get('/', (req, res) => {
+  res.send({ 'msg': 'looks like the server works!' })
 })
 
-app.listen(3000);
+app.listen(3000)
