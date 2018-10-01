@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 // const bodyParser = require('body-parser')
-// var getConnection = require('./utils/DBConnector')
+// var getConnection = require('../utils/DBConnector')
 
 router.get('/', (req, res) => {
   res.send({ 'msg': 'wow great job, u got the gold route. proud of u.' })

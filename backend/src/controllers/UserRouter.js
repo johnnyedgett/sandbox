@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 // const bodyParser = require('body-parser')
-var getConnection = require('./utils/DBConnector')
+var getConnection = require('../utils/DBConnector')
 
 // var User = require('../models/UserSchema')
 
