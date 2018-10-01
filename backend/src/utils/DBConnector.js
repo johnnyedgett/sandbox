@@ -1,4 +1,6 @@
 // Still trying to figure out the database connection..
+// Using MySQL at the moment, although I would rather use Mongo.
+// Going to probably change that to Mongo
 
 const mysql = require('mysql')
 
