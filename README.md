@@ -1,6 +1,7 @@
 # wow-gold-swap
 
 This app is my first attempt at an open-source type webapp! 
+Note that as of right now this is more of a sandbox for me than anything else. :)
 
 # Usage
 ## Deploy the Backend
@@ -26,3 +27,5 @@ gcloud app deploy
 ```
 
 ## Deploy the Frontend
+¯\_(ツ)_/¯
+
