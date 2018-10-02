@@ -11,8 +11,73 @@ var schema = buildSchema(`
   type Query {
     hello: String,
     doSomething(input: String): String
+    potatos(number: Int!): [Potato]
+  },
+  type Potato {
+    id: Int
+    name: String
   }
 `)
+
+var goldSchema = buildSchema(`
+  type Query {
+    gold(id: Int!): Int
+  },
+  type Gold{
+    id: Int
+    total: Int
+  }
+`)
+
+var gold = [
+  {
+    id: 1,
+    total: 1000
+  },
+  {
+    id: 2,
+    total: 2000
+  }
+]
+
+// If this was an array of objects retrieved from the mongo database..
+var potatos = [
+  {
+    id: 1,
+    name: 'red'
+  },
+  {
+    id: 2,
+    name: 'green'
+  },
+  {
+    id: 3,
+    name: 'blue'
+  }
+]
+
+var getPotatos = (number) => {
+  if (number === 0 || number > 10) {
+    return 'I can\'t return that many potatos'
+  } else {
+    return potatos
+  }
+}
+
+var getGold = ({ id }) => {
+  if (id === 0) {
+    return -1
+  } else {
+    for (var i = 0; i < gold.length; i++) {
+      console.log(`Checking for id: ${id}`)
+      if (gold[i].id === id) {
+        console.log('Found a match: ' + gold[i])
+        return gold[i].total
+      }
+    }
+    return -1
+  }
+}
 
 var root = {
   hello: () => 'Hello world!',
@@ -24,7 +89,12 @@ var root = {
     } else {
       return input.toLowerCase()
     }
-  }
+  },
+  potatos: getPotatos
+}
+
+var goldRoot = {
+  gold: getGold
 }
 
 // Load environment variables from .env file
@@ -38,6 +108,11 @@ app.use('/users', userRouter)
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
+  graphiql: true
+}))
+app.use('/test', graphqlHTTP({
+  schema: goldSchema,
+  rootValue: goldRoot,
   graphiql: true
 }))
 
