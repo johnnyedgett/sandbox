@@ -3,6 +3,8 @@
 This app is my first attempt at an open-source type webapp! 
 Note that as of right now this is more of a sandbox for me than anything else. :)
 
+Currenty following the graphql guiode at https://www.robinwieruch.de/graphql-apollo-server-tutorial/#apollo-server-setup-express
+
 # Usage
 ## Deploy the Backend
 To deploy the backend, cd into the backend folder create a .env document

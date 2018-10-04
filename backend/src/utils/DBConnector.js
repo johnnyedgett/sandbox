@@ -3,6 +3,7 @@
 // Going to probably change that to Mongo
 
 const mysql = require('mysql')
+require('dotenv').load()
 
 let dbUser = process.env.dbUser
 let dbPass = process.env.dbPass
@@ -18,6 +19,8 @@ var pool = mysql.createPool({
 })
 
 var getConnection = (cb) => {
+  console.log('The getConnection method was called')
+  console.log(dbSocketPath)
   pool.getConnection((err, connection) => {
     if (err) return cb(err)
     else cb(null, connection)
