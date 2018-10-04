@@ -5,21 +5,20 @@ var users = {
     gold:
     [
       {
-        serverName: 'Aerie Peak',
-        locale: 'EN-US',
-        gold: 1250
+        serverName: 'moonguard',
+        locale: 'en-us',
+        amount: '1000'
       },
       {
-        serverName: 'Moon Guard',
-        locale: 'EN-US',
-        gold: 93910039
+        serverName: 'aerie-peak',
+        locale: 'en-us',
+        amount: '123456'
       }
     ]
   },
   2: {
     id: '2',
-    username: 'poordude3',
-    gold: []
+    username: 'poordude3'
   }
 }
 

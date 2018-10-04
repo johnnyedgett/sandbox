@@ -9,7 +9,7 @@ export default {
       return models.users[id]
     },
     users: () => {
-      return Object.values(models.users)
+      return models.users
       // console.log(Object.keys(models.users))
       // var arr = []
       // Object.keys(models.users).forEach((key) => {

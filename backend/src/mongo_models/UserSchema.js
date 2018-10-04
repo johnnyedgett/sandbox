@@ -1,13 +1,17 @@
-// var mongoose = require('mongoose')
-// var Schema = mongoose.Schema
+var mongoose = require('mongoose')
+var Schema = mongoose.Schema
 
-// var UserSchema = new Schema({
-//   username: String,
-//   password: String,
-//   email: String,
-//   authLevel: String,
-//   createdDate: { type: Date, default: Date.now }
-// })
+var UserSchema = new Schema({
+  id: Number,
+  username: String,
+  gold: [
+    {
+      serverName: String,
+      locale: String,
+      amount: Number
+    }
+  ]
+})
 
-// var User = mongoose.model('User', UserSchema)
-// module.exports = User
+var user = mongoose.model('user', UserSchema)
+module.exports = user

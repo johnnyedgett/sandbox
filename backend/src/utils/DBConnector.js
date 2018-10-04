@@ -1,30 +1,22 @@
-// Still trying to figure out the database connection..
-// Using MySQL at the moment, although I would rather use Mongo.
-// Going to probably change that to Mongo
-
-const mysql = require('mysql')
+// This will take care of maintaining the connection with the database.
 require('dotenv').load()
+const dbserver = process.env.DB_SERVER
+const dbdatabase = process.env.DB_DATABASE
+const dbport = process.env.DB_PORT
+const mongoose = require('mongoose')
+const Admin = mongoose.mongo.Admin
 
-let dbUser = process.env.dbUser
-let dbPass = process.env.dbPass
-let dbDatabase = process.env.dbDatabase
-let dbSocketPath = process.env.dbSocketPath
+mongoose.connect('mongodb://' + dbserver + ':' + dbport + '/' + dbdatabase)
 
-var pool = mysql.createPool({
-  connectionLimit: 10,
-  socketPath: dbSocketPath,
-  user: dbUser,
-  password: dbPass,
-  database: dbDatabase
+var db = mongoose.connection
+
+db.once('open', () => {
+  console.log('the database connection has been created')
+  new Admin(db.db).listDatabases((err, res) => {
+    if (err) console.log(err)
+    console.log(res)
+    console.log('mongodb://' + dbserver + ':' + dbport + '/' + dbdatabase)
+  })
 })
 
-var getConnection = (cb) => {
-  console.log('The getConnection method was called')
-  console.log(dbSocketPath)
-  pool.getConnection((err, connection) => {
-    if (err) return cb(err)
-    else cb(null, connection)
-  })
-}
-
-module.exports = getConnection
+module.exports = db
