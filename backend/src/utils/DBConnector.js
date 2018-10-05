@@ -3,12 +3,17 @@ require('dotenv').load()
 const dbserver = process.env.DB_SERVER
 const dbdatabase = process.env.DB_DATABASE
 const dbport = process.env.DB_PORT
-const dbuser = process.env.DB_USERNAME
-const dbpass = process.env.DB_PASSWORD
+const dbuser = process.env.DB_USER
+const dbpass = process.env.DB_PASS
 const mongoose = require('mongoose')
 const Admin = mongoose.mongo.Admin
 
-mongoose.connect('mongodb://' + dbuser + ':' + dbpass + '@' + dbserver + ':' + dbport + '/' + dbdatabase)
+console.log(dbuser + ':' + dbpass)
+
+mongoose.connect('mongodb://' + dbserver + ':' + dbport + '/' + dbdatabase, {
+  user: dbuser,
+  pass: dbpass
+})
 
 var db = mongoose.connection
 
